@@ -1,0 +1,308 @@
+[
+    {
+        "id": 1,
+        "role": "hire",
+        "name": "aman",
+        "phone": "9893922378",
+        "password": "Abcdef123@",
+        "email": "aman@gmail.com",
+        "city": "Bhopal",
+        "company_name": "Home",
+        "company_type": "Small Business",
+        "company_address": "Jsw near railway station Bhopal",
+        "gender": "Male",
+        "experience": "Fresher",
+        "availability_status": "available",
+        "job_postings": [
+            {
+                "title": "Electricican",
+                "location": "Indore",
+                "salary": 10000,
+                "job_type": "Electrician",
+                "experience": "2-5 years",
+                "working_hours": "Weekends Only",
+                "urgency": "Normal",
+                "contract_type": "Temporary",
+                "description": "Need to be good with the eletricity",
+                "requirements": "should be good exprence",
+                "benefits": "tea or breakfast",
+                "id": 1,
+                "posted_date": "2025-07-23T15:56:03.320489",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Driver",
+                "location": "Rau",
+                "salary": 12000,
+                "job_type": "Driver",
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "This good",
+                "requirements": "nice",
+                "benefits": "do it",
+                "id": 2,
+                "posted_date": "2025-07-23T16:09:36.245833",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "cook",
+                "location": "super corridor",
+                "salary": 15000,
+                "job_type": "Cook",
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "thi",
+                "requirements": "he",
+                "benefits": "fet",
+                "id": 3,
+                "posted_date": "2025-07-23T16:20:33.243526",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "cook",
+                "location": "super corridor",
+                "salary": 15000,
+                "job_type": "Maid",
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "good working man",
+                "requirements": "no need more education",
+                "benefits": "breakfast both time",
+                "id": 4,
+                "posted_date": "2025-07-24T19:01:20.612799",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Maid",
+                "location": "Rau",
+                "salary": 15000,
+                "job_types": [
+                    "Maid"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "Working for big family",
+                "requirements": "to good in all home work",
+                "benefits": "breakfast",
+                "id": 5,
+                "posted_date": "2025-07-25T19:42:01.696117",
+                "status": "active",
+                "applications_count": 0
+            }
+        ],
+        "expected_salary": 15000
+    },
+    {
+        "id": 2,
+        "role": "hire",
+        "name": "om",
+        "phone": "9993922341",
+        "password": "Abcdef12@",
+        "email": "om@gmail.com",
+        "city": "indore",
+        "company_name": "Home",
+        "company_type": "Small Business",
+        "company_address": "rau 453331",
+        "gender": "Male",
+        "experience": "Fresher",
+        "designation": "",
+        "industry": "Domestic Services",
+        "company_size": "1-10",
+        "business_description": "I want to home maid for my family work\n ",
+        "address": "super corridor indore",
+        "state": "Maharashtra",
+        "pincode": "453001",
+        "website": "yash_technologies",
+        "availability_status": "available",
+        "expected_salary": 15000
+    },
+    {
+        "id": 3,
+        "role": "job",
+        "name": "amit jaat",
+        "phone": "9443939223",
+        "password": "Abcdef12@",
+        "email": "amit@gmail.com",
+        "city": "Indore",
+        "aadhaar": "456262414784",
+        "age": 23,
+        "gender": "Male",
+        "experience": "Fresher",
+        "work_type": [
+            "Driver"
+        ],
+        "expected_salary": 10000,
+        "availability": [
+            "Full Time"
+        ],
+        "state": "Madhya Pradesh",
+        "address": "Dhanka mohalla",
+        "profile_completed": true,
+        "updated_at": "2024-01-01T00:00:00",
+        "languages": [
+            "English"
+        ],
+        "additional_skills": [
+            "First Aid",
+            "Computer Basics"
+        ],
+        "preferred_work_location": "Live-in",
+        "bio": "i was an a computer science engineering",
+        "availability_status": "available"
+    },
+    {
+        "id": 4,
+        "role": "job",
+        "name": "Naivedyasingh",
+        "phone": "9111439303",
+        "password": "Abcd123@",
+        "email": "Naivedyasingh25@gmail.com",
+        "profile_completed": false,
+        "created_at": "2024-01-01T00:00:00",
+        "city": "pune",
+        "address": "Dhanka mohalla pansemal",
+        "aadhaar": "455673404788",
+        "age": 0,
+        "gender": "Male",
+        "experience": "Fresher",
+        "work_type": [],
+        "expected_salary": 15000,
+        "availability": [
+            "Full Time"
+        ],
+        "skills": [],
+        "languages": [
+            "Hindi"
+        ],
+        "job_types": [
+            "Security Guard",
+            "Plumber",
+            "Gardener"
+        ],
+        "education": "Primary",
+        "state": "Maharashtra",
+        "pincode": "451770",
+        "emergency_contact": "8964000011",
+        "emergency_name": "jadou bhai",
+        "availability_status": "busy"
+    },
+    {
+        "id": 5,
+        "role": "hire",
+        "name": "Naivedyasingh",
+        "phone": "9111439304",
+        "password": "123Abcd@",
+        "email": "Naivedyasingh25@gmail.com",
+        "profile_completed": true,
+        "created_at": "2024-01-01T00:00:00",
+        "city": "Indore",
+        "address": "Dhanka mohalla pansemal",
+        "company_name": "yash",
+        "company_type": "Large Corporation",
+        "company_address": "itpark indore",
+        "state": "Madhya Pradesh",
+        "updated_at": "2024-01-01T00:00:00",
+        "preferred_experience": "Fresher (0-1 years)",
+        "budget_range": "₹15,000 - ₹25,000",
+        "services_needed": [
+            "Pet Care",
+            "Plumber",
+            "Electrician"
+        ],
+        "work_schedule": [
+            "Full Time"
+        ],
+        "language_requirements": [
+            "Hindi"
+        ],
+        "special_requirements": "no",
+        "company_description": "Be good in nature",
+        "gender": "Male",
+        "experience": "Fresher",
+        "availability_status": "available",
+        "expected_salary": 15000
+    },
+    {
+        "id": 6,
+        "role": "job",
+        "name": "Naivedyasingh Jadaun",
+        "phone": "9111439305",
+        "email": "",
+        "password": "123Abcdef@",
+        "created_at": "2025-07-23T12:13:29.500014",
+        "gender": "Male",
+        "experience": "Fresher",
+        "availability_status": "available",
+        "expected_salary": 15000
+    },
+    {
+        "id": 7,
+        "role": "job",
+        "name": "yash",
+        "phone": "9878473474",
+        "email": "",
+        "password": "Yash@123",
+        "created_at": "2025-07-23T12:24:51.484261",
+        "gender": "Male",
+        "experience": "Fresher",
+        "availability_status": "available",
+        "expected_salary": 15000
+    },
+    {
+        "id": 8,
+        "role": "job",
+        "name": "Mahesh gupta",
+        "phone": "9878473445",
+        "email": "mahesh@gmail.com",
+        "gender": "Male",
+        "password": "123Abcd@",
+        "availability_status": "available",
+        "created_at": "2025-07-23T16:40:25.740567",
+        "aadhaar": "876123449876",
+        "experience": "2-5 years",
+        "job_types": [
+            "Security Guard"
+        ],
+        "expected_salary": 15000,
+        "availability": [
+            "Night Shifts",
+            "Full Time"
+        ],
+        "education": "Primary",
+        "languages": [
+            "Hindi"
+        ],
+        "address": "gandhi nagar indore near panni ka tank",
+        "city": "Delhi",
+        "state": "Delhi",
+        "pincode": "453331",
+        "emergency_contact": "9823774273",
+        "emergency_name": "mama bhau"
+    },
+    {
+        "id": 9,
+        "role": "hire",
+        "name": "Mukesh porwal",
+        "phone": "9113439304",
+        "email": "mukesh@gmail.com",
+        "gender": "Male",
+        "password": "12345@Ab",
+        "availability_status": "available",
+        "created_at": "2025-07-23T16:47:55.247262",
+        "company_name": "Mukesh house",
+        "experience": "Fresher",
+        "expected_salary": 15000
+    }
+]

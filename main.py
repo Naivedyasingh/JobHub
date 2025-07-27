@@ -27,27 +27,14 @@ if "current_user" not in st.session_state:
 
 def main():
     st.set_page_config(
-        page_title="JobConnect Portal", 
+        page_title="JobHub Portal", 
         page_icon="💼", 
         layout="wide",
         initial_sidebar_state="expanded",
     )
 
     # ─── Sidebar toggle logic ───────────────────────────────────────
-    if st.session_state.current_user is None:
-        # Hide entire sidebar for guests (landing, login, signup)
-        st.markdown(
-            """
-            <style>
-              /* Hide sidebar panel and toggle button */
-              [data-testid="stSidebar"] { display: none; }
-              [data-testid="collapsedControl"] { display: none; }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-    else:
-        # Show your custom sidebar only when logged in
+    if st.session_state.current_user:
         render_sidebar()
 
     # ─── One-time cleanup ────────────────────────────────────────────

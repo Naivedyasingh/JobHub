@@ -18,7 +18,7 @@ def get_job_seekers():
     return job_seekers
 
 def browse_job_seekers_page():
-    """Job seeker cards with container styling and 24h-offer logic"""
+    """Job seeker cards with clean native Streamlit styling"""
     user = st.session_state.current_user
 
     st.title("👥 Browse Job Seekers")
@@ -64,83 +64,140 @@ def browse_job_seekers_page():
     # Pre-load offers once
     all_offers = get_job_offers()
 
-    for seeker in filtered:
-        status = seeker.get('availability_status', 'available')
-        if status == 'available':
-            bg, border = "#e8f5e8", "#28a745"
-            icon, text = "🟢", "Available"
-        elif status == 'busy':
-            bg, border = "#fff3cd", "#ffc107"
-            icon, text = "🟡", "Busy"
-        else:
-            bg, border = "#f8d7da", "#dc3545"
-            icon, text = "🔴", "Not Available"
+    # Display seekers in grid layout (2 cards per row)
+    for i in range(0, len(filtered), 2):
+        cols = st.columns(2, gap="medium")
+        
+        for j, col in enumerate(cols):
+            if i + j < len(filtered):
+                seeker = filtered[i + j]
+                
+                with col:
+                    # Get status and styling
+                    status = seeker.get('availability_status', 'available')
+                    
+                    if status == 'available':
+                        status_color = "🟢"
+                        status_text = "Available"
+                        card_type = "success"
+                    elif status == 'busy':
+                        status_color = "🟡"
+                        status_text = "Busy"
+                        card_type = "warning"
+                    else:
+                        status_color = "🔴"
+                        status_text = "Not Available"
+                        card_type = "error"
 
-        st.markdown(
-            f"<hr style='border:none; height:3px; background:{border}; margin:20px 0;'>",
-            unsafe_allow_html=True
-        )
-        st.markdown(f"<div style='background:{bg}; border:2px solid {border}; border-radius:8px; padding:16px;'>", unsafe_allow_html=True)
+                    # Create card using Streamlit container with colored border
+                    with st.container(border=True):
+                        # Status header with colored background
+                        if status == 'available':
+                            st.success(f"{status_color} {status_text}", icon="✅")
+                        elif status == 'busy':
+                            st.warning(f"{status_color} {status_text}", icon="⚠️")
+                        else:
+                            st.error(f"{status_color} {status_text}", icon="❌")
+                        
+                        # Name and profile
+                        st.markdown(f"### 👤 {seeker['name']}")
 
-        # Header
-        hcol, mcol = st.columns([3,1])
-        with hcol:
-            st.markdown(f"<h4 style='margin:0;'>👤 {seeker['name']}</h4>", unsafe_allow_html=True)
-            st.markdown(f"<p style='margin:4px 0;'>{icon} {text}</p>", unsafe_allow_html=True)
-        with mcol:
-            pct = calculate_profile_completion(seeker)
-            st.metric("", f"{pct}%", label_visibility="collapsed")
+                        st.markdown(" ")
 
-        # Info
-        icol, scol, acol = st.columns(3)
-        with icol:
-            st.markdown("**📞 Contact**")
-            st.write(seeker["phone"])
-            st.write(seeker.get("city", "-"))
-        with scol:
-            st.markdown("**💼 Skills**")
-            skills = ", ".join(seeker.get("job_types", [])[:2])
-            if len(seeker.get("job_types", [])) > 2:
-                skills += "…"
-            st.write(skills)
-            st.write(seeker.get("experience", "-"))
-        with acol:
-            st.markdown("**⚡ Actions**")
-            # Check for recent offer
-            recent = None
-            for o in all_offers:
-                if o.get("employer_id") == user["id"] and o.get("job_seeker_id") == seeker["id"]:
-                    odt = dt.fromisoformat(o["offered_date"])
-                    delta = datetime.datetime.now() - odt
-                    if delta.total_seconds() < 24*3600:
-                        recent = delta
-                        break
-            if status != 'available':
-                st.button("❌ Not Available", disabled=True, use_container_width=True)
-            else:
-                if recent:
-                    hrs = int(recent.total_seconds() // 3600)
-                    st.button(f"⌛ Offered ({hrs}h ago)", disabled=True, use_container_width=True)
-                else:
-                    if st.button("💼 Offer Job", type="primary", use_container_width=True, key=f"offer_{seeker['id']}"):
-                        st.session_state.selected_candidate = seeker
-                        st.session_state.page = "offer_job"
-                        st.rerun()
+                        # Quick info in three columns (with divider)
+                        info_col1, divider_col, info_col2 = st.columns([5, 1, 5])
+                        
+                        with info_col1:
+                            st.markdown("**💼 Experience**")
+                            st.write(f"⏱️ {str(seeker.get('experience', 'Not specified'))}")
+                            salary = seeker.get("expected_salary", "Not specified")
+                            st.write(f"💰 {str(salary)}")
+                        
+                        with divider_col:
+                            st.markdown(
+                                """
+                                <div style="
+                                    border-left: 2px solid #e0e0e0; 
+                                    height: 110px; 
+                                    margin-left: 10%;
+                                "></div>
+                                """, 
+                                unsafe_allow_html=True
+                            )
+                            
+                        with info_col2:
+                            st.markdown("**📞 Contact**")
+                            st.write(f"📱 {str(seeker.get('phone', 'N/A'))}")
+                            st.write(f"🏙️ {str(seeker.get('city', 'Not specified'))}")
 
-        st.markdown("</div>", unsafe_allow_html=True)
+                        st.markdown("---")
 
-        # Expander for more details
-        with st.expander(f"{icon} More Details – {seeker['name']}"):
-            d1, d2 = st.columns(2)
-            with d1:
-                st.markdown("**📧 Email**")
-                st.write(seeker.get("email","-"))
-                st.markdown("**🏠 Address**")
-                addr = seeker.get("address","-")
-                st.write(addr if len(addr)<30 else addr[:30]+"…")
-            with d2:
-                st.markdown("**🚨 Emergency Contact**")
-                ec = seeker.get("emergency_name","-")
-                emc = seeker.get("emergency_contact","-")
-                st.write(f"{ec}: {emc}")
+                        # Action buttons
+                        # Check for recent offer
+                        recent = None
+                        for o in all_offers:
+                            if o.get("employer_id") == user["id"] and o.get("job_seeker_id") == seeker["id"]:
+                                odt = dt.fromisoformat(o["offered_date"])
+                                delta = datetime.datetime.now() - odt
+                                if delta.total_seconds() < 24*3600:
+                                    recent = delta
+                                    break
+                        
+                        # Action button row
+                        action_col1, action_col2 = st.columns(2)
+                        
+                        with action_col1:
+                            if status != 'available':
+                                st.button("❌ Not Available", disabled=True, use_container_width=True, key=f"disabled_{seeker['id']}")
+                            else:
+                                if recent:
+                                    hrs = int(recent.total_seconds() // 3600)
+                                    st.button(f"⌛ Offered ({hrs}h ago)", disabled=True, use_container_width=True, key=f"recent_{seeker['id']}")
+                                else:
+                                    if st.button("💼 Offer Job", type="primary", use_container_width=True, key=f"offer_{seeker['id']}"):
+                                        st.session_state.selected_candidate = seeker
+                                        st.session_state.page = "offer_job"
+                                        st.rerun()
+                        
+                        with action_col2:
+                            # Toggle details button
+                            details_key = f"show_details_{seeker['id']}"
+                            if details_key not in st.session_state:
+                                st.session_state[details_key] = False
+                            
+                            if st.button("👁️ Details", use_container_width=True, key=f"details_btn_{seeker['id']}"):
+                                st.session_state[details_key] = not st.session_state[details_key]
 
+                        # Show details if toggled
+                        if st.session_state.get(details_key, False):
+                            st.markdown("---")
+                            st.markdown("### 📋 Full Details")
+                            
+                            # Detailed info in tabs for better organization
+                            tab1, tab2, tab3 = st.tabs(["📧 Contact", "💼 Professional", "🚨 Emergency"])
+                            
+                            with tab1:
+                                st.write(f"**📧 Email:** {str(seeker.get('email', 'N/A'))}")
+                                st.write(f"**📱 Phone:** {str(seeker.get('phone', 'N/A'))}")
+                                st.write(f"**🏠 Address:** {str(seeker.get('address', 'Not provided'))}")
+                                st.write(f"**🏙️ City:** {str(seeker.get('city', 'Not specified'))}")
+                            
+                            with tab2:
+                                st.write(f"**🎓 Education:** {str(seeker.get('education', 'Not specified'))}")
+                                st.write(f"**⏱️ Experience:** {str(seeker.get('experience', 'Not specified'))}")
+                                st.write(f"**💰 Expected Salary:** {str(seeker.get('expected_salary', 'Not specified'))}")
+                                st.write(f"**📅 Notice Period:** {str(seeker.get('notice_period', 'Not specified'))}")
+                                
+                                st.write("**🛠️ All Skills:**")
+                                skills = seeker.get("job_types", [])
+                                if skills:
+                                    for skill in skills:
+                                        st.write(f"• {skill}")
+                                else:
+                                    st.write("No skills listed")
+                            
+                            with tab3:
+                                st.write(f"**👤 Name:** {str(seeker.get('emergency_name', 'Not provided'))}")
+                                st.write(f"**📞 Contact:** {str(seeker.get('emergency_contact', 'Not provided'))}")
+
+                        st.markdown("")  # Add some spacing

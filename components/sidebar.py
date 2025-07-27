@@ -2,15 +2,13 @@ import streamlit as st
 from utils.auth import calculate_profile_completion, update_user_profile
 
 def render_sidebar():
-    # Don’t render anything for guests
+    # Don't render anything for guests
     if st.session_state.current_user is None:
         return
 
     user = st.session_state.current_user
 
     with st.sidebar:
-        # User Avatar and Info
-        st.markdown("---")
 
         # Enhanced avatar with status for job seekers
         if user['role'] == 'job':
@@ -74,9 +72,14 @@ def render_sidebar():
             </div>
             """, unsafe_allow_html=True)
 
-        # Profile Completion
+        # Profile Completion with custom small text (Solution 2)
         completion = calculate_profile_completion(user)
-        st.metric("Profile Completion", f"{completion}%")
+        st.markdown(f"""
+        <div style=" margin: 10px 0; padding: 8px; background: #f0f2f6; border-radius: 8px;">
+            <div style="font-size: 1rem; color: #666; margin-bottom: 2px;">Profile Completion</div>
+            <div style="font-size: 1.2rem; font-weight: bold; color: #1f77b4;">{completion}%</div>
+        </div>
+        """, unsafe_allow_html=True)
         st.progress(completion / 100)
 
         st.markdown("---")

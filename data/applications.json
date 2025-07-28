@@ -187,7 +187,9 @@
         "expected_salary": 15000,
         "id": 11,
         "applied_date": "2025-07-25T11:39:55.018840",
-        "status": "pending"
+        "status": "rejected",
+        "response_date": "2025-07-28T11:18:40.670558",
+        "response_message": "Application rejected"
     },
     {
         "job_id": 5,
@@ -203,6 +205,8 @@
         "expected_salary": 15000,
         "id": 12,
         "applied_date": "2025-07-25T19:42:46.840205",
-        "status": "pending"
+        "status": "accepted",
+        "response_date": "2025-07-28T11:18:35.945345",
+        "response_message": "Application accepted"
     }
 ]

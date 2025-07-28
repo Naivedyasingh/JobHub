@@ -7,7 +7,7 @@ def stat_card(value, label, delta=None, delta_color="green"):
     """Create a statistics card with optional delta"""
     colors = {"green": "#28a745", "red": "#dc3545", "blue": "#007bff", "orange": "#fd7e14", "gray": "#6c757d"}
     delta_html = f"<div style='color: {colors.get(delta_color, '#28a745')}; font-size: 0.8rem; font-weight: 600; margin-top: 0.3rem;'>{delta}</div>" if delta else ""
-    return f"""<div style='text-align: center; padding: 1.5rem; background-color: #f8f9fa; border-radius: 10px; margin: 1rem 0;'>
+    return f"""<div style='text-align: center; padding: 1.5rem; background-color: #e8f4fd; border-radius: 10px; margin: 1rem 0;'>
         <div style='font-size: 1.8rem; font-weight: bold; color: #2c3e50; margin-bottom: 0.5rem;'>{value}</div>
         <div style='color: #666; font-size: 0.9rem;'>{label}</div>{delta_html}</div>"""
 

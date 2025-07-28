@@ -33,6 +33,25 @@ def main():
         initial_sidebar_state="expanded",
     )
 
+    # 🎨 GLOBAL BACKGROUND COLOR - APPLIES TO ALL PAGES
+    st.markdown("""
+    <style>
+    .stApp {
+        background-color: #F8F8F8 ;  /* Light gray background */
+    }
+
+    /* Optional: Make sidebar match */
+    .css-1d391kg {
+        background-color: #f8f9fa;
+    }
+
+    /* Keep content areas clean */
+    .block-container {
+        background-color: transparent;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
     # ─── Sidebar toggle logic ───────────────────────────────────────
     if st.session_state.current_user:
         render_sidebar()
@@ -77,4 +96,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

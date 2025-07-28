@@ -46,7 +46,6 @@ def render_sidebar():
             """, unsafe_allow_html=True)
 
             # Quick status changer
-            st.markdown("**🔄 Quick Status Change:**")
             new_status = st.selectbox(
                 "Change Status:",
                 list(status_info.keys()),

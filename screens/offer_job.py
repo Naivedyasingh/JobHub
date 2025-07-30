@@ -3,7 +3,7 @@
 import streamlit as st
 from utils.data_helpers import read_json, write_json
 from utils.offers import save_job_offer
-from datetime import datetime
+import time
 
 def offer_job_page():
     """Enhanced page for employers to offer job to specific candidate"""
@@ -75,7 +75,10 @@ def offer_job_page():
             
             if save_job_offer(offer_data):
                 st.success(f"🎉 Job offer sent to {candidate['name']}!")
-                st.balloons()
+                st.session_state.page = "hire_dashboard"
+                st.session_state.page_flag = None
+                st.session_state.job_posting_disabled = False
+                time.sleep(3)
                 st.info("The candidate has 24 hours to respond to your offer.")
                 st.info("You will be notified once they accept or decline the offer.")
             else:

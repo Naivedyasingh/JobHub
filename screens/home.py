@@ -63,16 +63,16 @@ def home_page():
     st.markdown("---\n### 🔄 **Our Impact on Employment**")
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown(info_card("Before JobConnect", "• Job seekers struggled to find reliable work<br>• Employers had difficulty finding trusted help<br>• Time-consuming manual searching process<br>• High agency fees and commissions<br>• Limited job visibility and opportunities<br>• No proper verification system", "#fff5f5", "#e74c3c", "#c0392b", "😔"), unsafe_allow_html=True)
+        st.markdown(info_card("Before JobConnect", "• Job seekers struggled to find reliable work<br>• Employers had difficulty finding trusted help<br>• Time-consuming manual searching process<br>• High agency fees and commissions<br>• Limited job visibility and opportunities<br>• No proper verification system", "#f9ecec", "#e74c3c", "#c0392b", "😔"), unsafe_allow_html=True)
     with col2:
-        st.markdown(info_card("After JobConnect", "• Easy access to verified job opportunities<br>• Secure platform with identity verification<br>• Digital profiles showcase skills & experience<br>• Fair salary expectations and transparency<br>• Quick job matching and applications<br>• Direct communication between parties", "#f0fff4", "#27ae60", "#27ae60", "🌟"), unsafe_allow_html=True)
+        st.markdown(info_card("After JobConnect", "• Easy access to verified job opportunities<br>• Secure platform with identity verification<br>• Digital profiles showcase skills & experience<br>• Fair salary expectations and transparency<br>• Quick job matching and applications<br>• Direct communication between parties", "#e9f4ec", "#27ae60", "#27ae60", "🌟"), unsafe_allow_html=True)
     
     # Platform Growth
     st.markdown("---\n### 🎉 **Platform Growth**")
     cities_represented = len(set([u.get('city', '').lower() for u in users if u.get('city')]))
     skills_count = len(set([skill for u in job_seekers for skill in u.get('work_type', [])]))
     
-    st.markdown(f"""<div style='text-align: center; padding: 2rem; background-color: #f0f8ff; border-radius: 15px; margin: 1rem 0; border-left: 5px solid #1f77b4;'>
+    st.markdown(f"""<div style='text-align: center; padding: 2rem; background-color: #f0f0ff; border-radius: 15px; margin: 1rem 0; border-left: 5px solid #1f77b4;'>
         <h4 style='color: #1f77b4; margin-bottom: 1.5rem;'>📊 Our Growing Community</h4>
         <div style='display: flex; justify-content: space-around; flex-wrap: wrap;'>
             <div style='margin: 0.5rem;'><div style='font-size: 1.5rem; font-weight: bold; color: #2c3e50;'>{cities_represented if cities_represented > 0 else 5}+</div><div style='color: #666; font-size: 0.9rem;'>Cities Covered</div></div>

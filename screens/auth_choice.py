@@ -32,8 +32,6 @@ def auth_choice_page():
         key="auth_lottie"
     )
 
-    # st.markdown("<br>", unsafe_allow_html=True)
-
     col1, col2 = st.columns(2, gap="large")
     with col1:
         if st.button("🔑 Login", type="primary", use_container_width=True, key="auth_login"):

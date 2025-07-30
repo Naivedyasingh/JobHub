@@ -100,6 +100,234 @@
                 "posted_date": "2025-07-25T19:42:01.696117",
                 "status": "active",
                 "applications_count": 0
+            },
+            {
+                "title": "Driver",
+                "location": "Indore vijay nagar",
+                "salary": 10000,
+                "job_types": [
+                    "Driver"
+                ],
+                "experience": "2-5 years",
+                "working_hours": "Full Time",
+                "urgency": "Urgent",
+                "contract_type": "Permanent",
+                "description": "Good driving skills and avoid the drinks and other toxics thing",
+                "requirements": "Should know the traffic rules properly",
+                "benefits": "lunch and dinner",
+                "id": 6,
+                "posted_date": "2025-07-29T19:38:17.526203",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Driver",
+                "location": "Indore vijay nagar",
+                "salary": 10000,
+                "job_types": [
+                    "Driver"
+                ],
+                "experience": "2-5 years",
+                "working_hours": "Full Time",
+                "urgency": "Urgent",
+                "contract_type": "Permanent",
+                "description": "Good driving skills and avoid the drinks and other toxics thing",
+                "requirements": "Should know the traffic rules properly",
+                "benefits": "lunch and dinner",
+                "id": 7,
+                "posted_date": "2025-07-29T19:38:22.602365",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Plumber",
+                "location": "Indore near railway station",
+                "salary": 5000,
+                "job_types": [
+                    "Plumber"
+                ],
+                "experience": "2-5 years",
+                "working_hours": "Part Time",
+                "urgency": "Normal",
+                "contract_type": "Part-time",
+                "description": "Need a plumber",
+                "requirements": "Good with the solve water problem",
+                "benefits": "tea,breakfast",
+                "id": 8,
+                "posted_date": "2025-07-29T19:49:41.082719",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "House cleaner",
+                "location": "Mhow near army school",
+                "salary": 15000,
+                "job_types": [
+                    "Cleaner"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "Clean the house,bike and car",
+                "requirements": "no thing any thing",
+                "benefits": "Breakfast of both time",
+                "id": 9,
+                "posted_date": "2025-07-29T19:54:34.178877",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "House cleaner",
+                "location": "Indore near army school",
+                "salary": 15000,
+                "job_types": [
+                    "Cleaner"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "Clean the house,bike and car",
+                "requirements": "no thing any thing",
+                "benefits": "Breakfast of both time",
+                "id": 10,
+                "posted_date": "2025-07-29T19:58:48.378250",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Security guard",
+                "location": "Indore public school super corridor",
+                "salary": 15000,
+                "job_types": [
+                    "Security Guard"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "security guard at the school for 1 to8 class",
+                "requirements": "10th pass and good communication in hindi",
+                "benefits": "no meal",
+                "id": 11,
+                "posted_date": "2025-07-29T20:01:15.815291",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Driver",
+                "location": "Indore",
+                "salary": 15000,
+                "job_types": [
+                    "Driver"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "good drive",
+                "requirements": "no",
+                "benefits": "No",
+                "id": 12,
+                "posted_date": "2025-07-29T20:02:52.285915",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Babysitter",
+                "location": "Tilak nagar indore",
+                "salary": 10000,
+                "job_types": [
+                    "Babysitter"
+                ],
+                "experience": "5+ years",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "Need a babysitter",
+                "requirements": "No needed",
+                "benefits": "Tea",
+                "id": 13,
+                "posted_date": "2025-07-30T10:46:52.384968",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Driver",
+                "location": "Indore",
+                "salary": 15000,
+                "job_types": [
+                    "Driver"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "Driver have all india national permait",
+                "requirements": "No needed",
+                "benefits": "no",
+                "id": 14,
+                "posted_date": "2025-07-30T10:51:21.029744",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Cook",
+                "location": "Indore bhawarkua near pw",
+                "salary": 15000,
+                "job_types": [
+                    "Maid"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "good cook",
+                "requirements": "no",
+                "benefits": "no",
+                "id": 15,
+                "posted_date": "2025-07-30T11:00:36.955542",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Cook",
+                "location": "Indore bhawarkua near pw",
+                "salary": 15000,
+                "job_types": [
+                    "Cook"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "good with cooking skills",
+                "requirements": "no",
+                "benefits": "no",
+                "id": 16,
+                "posted_date": "2025-07-30T11:04:49.354427",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "mechanic",
+                "location": "Inodre near 56",
+                "salary": 15000,
+                "job_types": [
+                    "Other"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "repair the bike",
+                "requirements": "good with engine",
+                "benefits": "no",
+                "id": 17,
+                "posted_date": "2025-07-30T11:10:06.778243",
+                "status": "active",
+                "applications_count": 0
             }
         ],
         "expected_salary": 15000
@@ -196,7 +424,7 @@
         "pincode": "451770",
         "emergency_contact": "8964000011",
         "emergency_name": "jadou bhai",
-        "availability_status": "busy"
+        "availability_status": "available"
     },
     {
         "id": 5,

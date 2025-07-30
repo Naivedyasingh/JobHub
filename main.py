@@ -2,7 +2,6 @@ import streamlit as st
 from utils.data_helpers import cleanup_user_data
 from components.sidebar import render_sidebar
 
-# Import each page module
 from screens.home import home_page 
 from screens.auth_choice import auth_choice_page
 from screens.login import login_page
@@ -17,7 +16,6 @@ from screens.view_applications import view_applications_page
 from screens.profile import profile_page
 from screens.contact import contact_page
 
-# Initialize session state
 if "page" not in st.session_state:
     st.session_state.page = "home"
 if "role" not in st.session_state:
@@ -33,35 +31,29 @@ def main():
         initial_sidebar_state="expanded",
     )
 
-    # 🎨 GLOBAL BACKGROUND COLOR - APPLIES TO ALL PAGES
     st.markdown("""
     <style>
     .stApp {
         background-color: #F8F8F8 ;  /* Light gray background */
     }
-
     /* Optional: Make sidebar match */
     .css-1d391kg {
         background-color: #f8f9fa;
     }
-
     /* Keep content areas clean */
     .block-container {
         background-color: transparent;
     }
     </style>
     """, unsafe_allow_html=True)
-
-    # ─── Sidebar toggle logic ───────────────────────────────────────
+    
     if st.session_state.current_user:
         render_sidebar()
 
-    # ─── One-time cleanup ────────────────────────────────────────────
     if 'data_cleaned' not in st.session_state:
         cleanup_user_data()
         st.session_state.data_cleaned = True
 
-    # ─── Main content area ──────────────────────────────────────────
     page = st.session_state.page
 
     if page == "home":

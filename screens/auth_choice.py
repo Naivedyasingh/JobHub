@@ -22,7 +22,7 @@ def auth_choice_page():
     """, unsafe_allow_html=True)
 
     # Load and display Lottie animation above the buttons
-    lottie = load_lottie("lottie_animation\Login.json")  # adjust path if needed
+    lottie = load_lottie("lottie_animation/Login.json")  # adjust path if needed
     st_lottie(
         lottie,
         speed=1,

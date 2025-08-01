@@ -183,7 +183,7 @@ def job_dashboard():
                         if save_job_application(application):
                             st.success("✅ Application sent successfully!")
                             time.sleep(1)
-                            st.experimental_rerun()
+                            st.rerun()
         else:
             st.info("🎉 No new jobs available to apply for!")
 

@@ -1,5 +1,3 @@
-# pages/hire_dashboard.py
-
 import streamlit as st
 from utils.applications import get_job_applications
 from utils.auth import calculate_profile_completion

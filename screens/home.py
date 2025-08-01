@@ -1,5 +1,3 @@
-# pages/home.py
-
 import streamlit as st
 from utils.data_helpers import read_json
 

@@ -1,7 +1,8 @@
 import os
 import json
 from datetime import datetime, timedelta
-from utils.data_helpers import read_json, write_json# ---------------- Authentication & Profile Helpers ----------------
+from utils.data_helpers import read_json, write_json
+# ---------------- Authentication & Profile Helpers ----------------
 
 def authenticate(identifier, pwd, role):
     users = read_json("data/users.json")

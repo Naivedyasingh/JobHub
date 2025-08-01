@@ -17,8 +17,8 @@ def contact_page():
         #### 📍 Contact Information
         
         **Phone:** +91-9876543210  
-        **Email:** support@jobconnect.com  
-        **Address:** 123 Business Park, Mumbai, India
+        **Email:** support@jobHub.com  
+        **Address:** IT park near yash technologies, Indore, India
         
         **Business Hours:**  
         Monday - Friday: 9:00 AM - 6:00 PM  

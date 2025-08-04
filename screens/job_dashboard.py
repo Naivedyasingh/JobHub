@@ -24,7 +24,7 @@ def job_dashboard():
         st.error(f"⚠️ **Profile Incomplete ({completion}%)** - Complete your profile to apply for jobs and receive offers!")
         if st.button("📝 Complete Profile Now", type="primary", key="dashboard_complete_profile"):
             st.session_state.page = "profile"
-            st.experimental_rerun()
+            st.rerun()
         st.markdown("---")
         return
 
@@ -59,13 +59,12 @@ def job_dashboard():
                 if st.button("✅ Accept", key=f"accept_offer_{offer['id']}", type="primary"):
                     update_offer_status(offer['id'], 'accepted', 'Job offer accepted by job seeker')
                     st.success("🎉 Job offer accepted! The employer will be notified.")
-                    st.balloons()
-                    st.experimental_rerun()
+                    st.rerun()
             with col_reject:
                 if st.button("❌ Decline", key=f"decline_offer_{offer['id']}"):
                     update_offer_status(offer['id'], 'rejected', 'Job offer declined by job seeker')
                     st.info("Job offer declined.")
-                    st.experimental_rerun()
+                    st.rerun()
         st.markdown("---")
 
     # Aggregate all jobs from demo and employers

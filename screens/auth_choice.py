@@ -11,26 +11,35 @@ def load_lottie(filepath: str):
 
 def auth_choice_page():
     role_name = "Job Seeker" if st.session_state.role == "job" else "Employer"
+    st.markdown("""
+    <style>
+      #MainMenu {visibility: hidden;}
+      header {visibility: hidden;}
+      footer {visibility: hidden;}
+    </style>
+    """, unsafe_allow_html=True)
 
     st.markdown(f"""
     <div style="text-align: center; margin-bottom: 2rem;">
         <h1 style="color: #1f77b4; font-size: 2.5rem;">{role_name} – Authentication</h1>
-        <p style="color: #555; font-size: 1.2rem; margin-top: 0.25rem;">
+        <p style="color: #333; font-size: 1.2rem; margin-top: 0.25rem;">
             What would you like to do?
         </p>
     </div>
     """, unsafe_allow_html=True)
 
     # Load and display Lottie animation above the buttons
-    lottie = load_lottie("lottie_animation/Login.json")  # adjust path if needed
-    st_lottie(
-        lottie,
-        speed=1,
-        loop=True,
-        quality="high",
-        height=300,
-        key="auth_lottie"
-    )
+    lottie = load_lottie("D:\JobHub\.streamlit\public\Login.json")  
+    _,col2,_=st.columns([1,2,1])
+    with col2:
+        st_lottie(
+            lottie,
+            speed=1,
+            loop=True,
+            quality="high",
+            height=400,
+            key="auth_lottie"
+        )
 
     col1, col2 = st.columns(2, gap="large")
     with col1:

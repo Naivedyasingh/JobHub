@@ -1,7 +1,8 @@
 import streamlit as st
+import base64
+import os
 from utils.data_helpers import cleanup_user_data
 from components.sidebar import render_sidebar
-
 from screens.home import home_page 
 from screens.auth_choice import auth_choice_page
 from screens.login import login_page
@@ -16,6 +17,7 @@ from screens.view_applications import view_applications_page
 from screens.profile import profile_page
 from screens.contact import contact_page
 
+
 if "page" not in st.session_state:
     st.session_state.page = "home"
 if "role" not in st.session_state:
@@ -23,37 +25,56 @@ if "role" not in st.session_state:
 if "current_user" not in st.session_state:
     st.session_state.current_user = None
 
+
 def main():
+
+    # Load video for background
+    video_path = r".streamlit\public\background_video.mp4"  
+    if not os.path.exists(video_path):
+        st.error(f"Video file not found: {video_path}")
+        st.stop()
+
+    with open(video_path, "rb") as f:
+        video_b64 = base64.b64encode(f.read()).decode()
+
+    st.markdown(f"""
+    <style>
+        #bgvid {{
+            position: fixed; top:0; left:0;
+            width:100vw; height:100vh;
+            object-fit:cover;
+            z-index:-1;
+            filter: blur(13px) brightness(0.92);
+            pointer-events:none;
+        }}
+        .stApp {{ background: transparent; }}
+        .css-1d391kg {{ background-color: #f8f9fa; }}   /* optional sidebar bg if needed */
+        .block-container {{ background-color: transparent; }}
+    </style>
+    <video id="bgvid" autoplay muted loop>
+        <source src="data:video/mp4;base64,{video_b64}" type="video/mp4">
+    </video>
+    """, unsafe_allow_html=True)
+
+    # Set page config and custom background styles
     st.set_page_config(
-        page_title="JobHub Portal", 
-        page_icon="💼", 
+        page_title="JobHub Portal",
+        page_icon="💼",
         layout="wide",
         initial_sidebar_state="expanded",
     )
 
-    st.markdown("""
-    <style>
-    .stApp {
-        background-color: #F8F8F8 ;  /* Light gray background */
-    }
-    /* Optional: Make sidebar match */
-    .css-1d391kg {
-        background-color: #f8f9fa;
-    }
-    /* Keep content areas clean */
-    .block-container {
-        background-color: transparent;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    
+
+    # Render sidebar if logged in
     if st.session_state.current_user:
         render_sidebar()
 
+    # Cleanup user data once
     if 'data_cleaned' not in st.session_state:
         cleanup_user_data()
         st.session_state.data_cleaned = True
 
+    # Page routing
     page = st.session_state.page
 
     if page == "home":
@@ -85,6 +106,7 @@ def main():
     else:
         st.session_state.page = "home"
         home_page()
+
 
 if __name__ == "__main__":
     main()

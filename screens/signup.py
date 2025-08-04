@@ -11,10 +11,18 @@ DATA_FOLDER = "data"
 USERS_FILE = os.path.join(DATA_FOLDER, "users.json")
 
 def signup_page():
+    st.markdown("""
+    <style>
+      #MainMenu {visibility: hidden;}
+      header {visibility: hidden;}
+      footer {visibility: hidden;}
+    </style>
+    """, unsafe_allow_html=True)
+
     role_name = "Job Seeker" if st.session_state.role == "job" else "Employer"
     
-    st.markdown(f"<h1 style='text-align:center;color:#007BFF;'>✨ {role_name} Sign Up</h1>", unsafe_allow_html=True)
-    st.markdown(f"<h4 style='text-align:center;color:#555;margin-top:-10px;font-weight:400;'>Create your account and start your journey today.</h4>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align:center;color:#1f77b4;'>✨ {role_name} Sign Up</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h4 style='text-align:center;color:#222;margin-top:-10px;font-weight:400;'>Create your account and start your journey today.</h4>", unsafe_allow_html=True)
 
     st.markdown("""<style>.terms-checkbox{margin-top:-10px;margin-bottom:20px;}.back-button{margin-top:20px;}</style>""", unsafe_allow_html=True)
 
@@ -67,8 +75,9 @@ def signup_page():
                     st.session_state.current_user = user
                     st.session_state.page = f"{user['role']}_dashboard"
                     st.rerun()
-
-    st.markdown("---")
+    st.markdown("\n")
+    st.markdown("".join(["─"] * 97),)
+    st.markdown("\n")
 
     col1, col2, col3 = st.columns(3)
     with col1:

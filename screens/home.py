@@ -50,39 +50,39 @@ def home_page():
     st.markdown("<h3 style='text-align: center; color: #2c3e50; margin-bottom: 1.5rem;'>🚀 <strong>Get Started Today!</strong></h3>", unsafe_allow_html=True)
 
     st.markdown("""
-<style>
-div.stButton > button {
-    height: 55px;
-    font-size: 60px;
-    padding: 10px 24px;
-    border: 1.5px solid #000;
-    border-radius: 10px;
-    background-color: #fff;
-    color: #000;
-    font-weight: 800;
-}
-div.stButton > button:hover {
-    background-color: #dcdcdc ;
-    border-color: #999;
-}
-.info-div {
-    text-align: center;
-    padding: 1rem;
-    background-color: #e8f4fd;
-    border-left: 5px solid #6495ed;
-    border-radius: 10px;
-    margin-top: 0.5rem;
-    font-weight: 600;
-    
-}
-</style>
-""", unsafe_allow_html=True)
+        <style>
+        div.stButton > button {
+            height: 55px;
+            font-size: 60rem;
+            padding: 10px 24px;
+            border: 1.5px solid #000;
+            border-radius: 10px;
+            background-color: #fff;
+            color: #000;
+            font-weight: 900;
+        }
+        div.stButton > button:hover {
+            background-color: #dcdcdc ;
+            border-color: #999;
+        }
+        .info-div {
+            text-align: center;
+            padding: 1rem;
+            background-color: #e8f4fd;
+            border-left: 5px solid #6495ed;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+            font-weight: 600;
+            
+        }
+        </style>
+        """, unsafe_allow_html=True)
 
 
     col1, col2 = st.columns(2)
     
     with col1:
-        if st.button("🔍 I want a Job", key="job_button", use_container_width=True, type="secondary"):
+        if st.button("🔍 I WANT A JOB ", key="job_button", use_container_width=True, type="secondary"):
             st.session_state.role = "job"
             st.session_state.page = "auth_choice"
             st.rerun()
@@ -92,7 +92,7 @@ div.stButton > button:hover {
             </div>""", unsafe_allow_html=True)
     
     with col2:
-        if st.button("🏢 I want to Hire", key="hire_button", use_container_width=True, type="secondary"):
+        if st.button("🏢 I WANT TO HIRE ", key="hire_button", use_container_width=True, type="secondary"):
             st.session_state.role = "hire"
             st.session_state.page = "auth_choice"
             st.rerun()

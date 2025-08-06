@@ -29,7 +29,7 @@ def auth_choice_page():
     """, unsafe_allow_html=True)
 
     # Load and display Lottie animation above the buttons
-    lottie = load_lottie("D:\JobHub\.streamlit\public\Login.json")  
+    lottie = load_lottie(".streamlit/public/Login.json")  
     _,col2,_=st.columns([1,2,1])
     with col2:
         st_lottie(

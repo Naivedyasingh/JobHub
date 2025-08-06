@@ -29,7 +29,7 @@ if "current_user" not in st.session_state:
 def main():
 
     # Load video for background
-    video_path = r".streamlit\public\background_video.mp4"  
+    video_path = r".streamlit\background_video.mp4"  
     if not os.path.exists(video_path):
         st.error(f"Video file not found: {video_path}")
         st.stop()

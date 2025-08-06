@@ -25,8 +25,8 @@ def hire_dashboard():
             st.rerun()
     with col4:
         if st.button("📊 My Jobs", use_container_width=True, key="hire_my_jobs"):
-            st.session_state.page = "my_job_postings"
-            st.rerun()
+            st.info("Feature Under construction")
+            
 
     st.markdown("---")
 

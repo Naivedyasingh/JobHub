@@ -25,6 +25,19 @@ if "role" not in st.session_state:
 if "current_user" not in st.session_state:
     st.session_state.current_user = None
 
+transparent_header_style = """
+        <style>
+        .st-emotion-cache-1ffuo7c {
+            background: transparent !important;
+        }
+
+        /* Backup selectors in case the emotion class changes */
+        [data-testid="stHeader"] {
+            background: rgba(0,0,0,0) !important;
+        }
+        </style>
+        """
+st.markdown(transparent_header_style, unsafe_allow_html=True)
 
 def main():
 

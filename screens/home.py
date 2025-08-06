@@ -146,14 +146,41 @@ def home_page():
     
    
     st.markdown("".join(["─"] * 97))
+   # Custom CSS for contact link styling
     st.markdown("""
-<div style='text-align: center; color: #333; font-size: 0.9rem;'>
-    💡 <strong>Why Choose JobConnect?</strong><br>
-    ✅ Verified profiles • 🔒 Secure platform • 💰 Fair pricing • ⭐ Quality assurance<br>
-    🤝 Personalized support • 🧑‍💻 Easy job posting & application • ⚡ Fast response times<br><br>
-    <span style='font-size: 1.1rem; color: #2c3e50; font-weight: 600;'>
-        📱 Contact us: <a href="mailto:support@JobHub.com" style="color: #2c3e50;">support@JubHub.com</a> | 📞 +91-91114-39303
-    </span>
-</div>
-""", unsafe_allow_html=True)
+    <style>
+    .contact-link {
+        cursor: pointer;
+        color: #1f77b4 !important;
+        text-decoration: underline;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+    .contact-link:hover {
+        color: #0d5aa7 !important;
+        text-decoration: none;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Your original content with clickable contact
+    st.markdown("""
+    <div style='text-align: center; color: #333; font-size: 0.9rem;'>
+        💡 <strong>Why Choose JobConnect?</strong><br>
+        ✅ Verified profiles • 🔒 Secure platform • 💰 Fair pricing • ⭐ Quality assurance<br>
+        🤝 Personalized support • 🧑‍💻 Easy job posting & application • ⚡ Fast response times<br><br>
+        <span style='font-size: 1.1rem; color: #2c3e50; font-weight: 600;'>
+            📱 Email us: <a href="mailto:support@JobHub.com" style="color: #2c3e50;">support@JobHub.com</a> | 📞 +91-91114-39303
+        </span>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Add a separate contact button below
+    st.markdown("<br>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([2, 1, 2])
+    with col2:
+        if st.button("📞 Visit Contact Page", use_container_width=True, type="primary"):
+            st.session_state.page = "contact"
+            st.rerun()
+    
 

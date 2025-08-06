@@ -40,3 +40,9 @@ def contact_page():
                     st.success("✅ Message sent successfully! We'll get back to you soon.")
                 else:
                     st.error("Please fill all required fields")
+    st.markdown("\n")
+    _, col2, _ = st.columns([1, 2, 1])
+    with col2:
+        if st.button("<- Back", use_container_width=True):
+            st.session_state.page = "home"
+            st.rerun()

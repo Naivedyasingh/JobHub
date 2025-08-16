@@ -102,7 +102,9 @@ def home_page():
             </div>""", unsafe_allow_html=True)
     
     st.markdown("\n")
-    st.markdown("".join(["─"] * 97))
+    st.markdown("""
+    <hr style="width: 100%; height: 2px; background-color: #444; border: none; margin: 1.5rem 0; border-radius: 2px;">
+    """, unsafe_allow_html=True)
 
 
     # Get user data
@@ -121,7 +123,9 @@ def home_page():
             st.markdown(stat_card(value, label, delta, delta_color), unsafe_allow_html=True)
     
     # Impact Section
-    st.markdown("".join(["─"] * 97))
+    st.markdown("""
+    <hr style="width: 100%; height: 2px; background-color: #444; border: none; margin: 1.5rem 0; border-radius: 2px;">
+    """, unsafe_allow_html=True)
     st.markdown("### 🔄 **Our Impact on Employment**")
 
     col1, col2 = st.columns(2)
@@ -131,7 +135,9 @@ def home_page():
         st.markdown(info_card("After JobConnect", "• Easy access to verified job opportunities<br>• Secure platform with identity verification<br>• Digital profiles showcase skills & experience<br>• Fair salary expectations and transparency<br>• Quick job matching and applications<br>• Direct communication between parties", "#e9f4ec", "#27ae60", "#27ae60", "🌟"), unsafe_allow_html=True)
     
     # Platform Growth
-    st.markdown("".join(["─"] * 97))
+    st.markdown("""
+    <hr style="width: 100%; height: 2px; background-color: #444; border: none; margin: 1.5rem 0; border-radius: 2px;">
+    """, unsafe_allow_html=True)
     st.markdown("\n### 🎉 **Platform Growth**")
     cities_represented = len(set([u.get('city', '').lower() for u in users if u.get('city')]))
     skills_count = len(set([skill for u in job_seekers for skill in u.get('work_type', [])]))
@@ -145,7 +151,9 @@ def home_page():
         </div><p style='margin-top: 1rem; color: #666; font-style: italic;'>"Connecting talent with opportunities across the region"</p></div>""", unsafe_allow_html=True)
     
    
-    st.markdown("".join(["─"] * 97))
+    st.markdown("""
+    <hr style="width: 100%; height: 2px; background-color: #444; border: none; margin: 1.5rem 0; border-radius: 2px;">
+    """, unsafe_allow_html=True)
    # Custom CSS for contact link styling
     st.markdown("""
     <style>

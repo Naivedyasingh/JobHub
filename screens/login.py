@@ -1,5 +1,3 @@
-# pages/login.py
-
 import streamlit as st
 from utils.auth import authenticate
 

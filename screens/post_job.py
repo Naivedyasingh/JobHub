@@ -1,5 +1,3 @@
-# pages/post_job.py
-
 import streamlit as st
 from datetime import datetime
 import time
@@ -13,7 +11,6 @@ JOBS_FILE = f"{DATA_FOLDER}/demo_jobs.json"
 def post_job_page():
     user = st.session_state.current_user
 
-    # Reset post-disable on page entry
     if "page_flag" not in st.session_state or st.session_state.page_flag != "post_job":
         st.session_state.job_posting_disabled = False
         st.session_state.page_flag = "post_job"
@@ -68,7 +65,7 @@ def post_job_page():
                 st.session_state.page = "hire_dashboard"
                 st.session_state.page_flag = None
                 st.session_state.job_posting_disabled = False
-                time.sleep(1)
+                time.sleep(3)
                 st.rerun()
             else:
                 st.error("Failed to post job. Please try again.")

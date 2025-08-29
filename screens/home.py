@@ -33,12 +33,10 @@ def home_page():
     </style>
     """, unsafe_allow_html=True)
 
-    # Hero section
     
     _, col2, _ = st.columns([1, 2, 1])
     with col2:
         st.image(r".streamlit/public/title_logo.png", width=500)
-        # Place the markdown directly after the image with no blank lines to avoid extra space
         st.markdown("""
         <div style='text-align: center; padding: 0; margin: 0;'>
           <h3 style='color: #000000; font-weight: 500; margin: 0;padding:0;'>Connecting Dreams with Opportunities</h3><br><br><br><br><br><br>
@@ -46,7 +44,6 @@ def home_page():
         """, unsafe_allow_html=True)
 
 
-     # Call to Action
     st.markdown("<h3 style='text-align: center; color: #2c3e50; margin-bottom: 1.5rem;'>🚀 <strong>Get Started Today!</strong></h3>", unsafe_allow_html=True)
 
     st.markdown("""
@@ -107,12 +104,10 @@ def home_page():
     """, unsafe_allow_html=True)
 
 
-    # Get user data
     users = read_json("data/users.json")
     job_seekers = [u for u in users if u.get('role') == 'job']
     employers = [u for u in users if u.get('role') == 'hire']
     
-    # Platform Impact Statistics
     st.markdown("### 📊 **Platform Impact**")
     col1, col2, col3, col4 = st.columns(4)
     stats = [(len(job_seekers), "Job Seekers", "Active", "green"), (len(employers), "Employers", "Hiring", "blue"), 
@@ -122,7 +117,6 @@ def home_page():
         with col:
             st.markdown(stat_card(value, label, delta, delta_color), unsafe_allow_html=True)
     
-    # Impact Section
     st.markdown("""
     <hr style="width: 100%; height: 2px; background-color: #444; border: none; margin: 1.5rem 0; border-radius: 2px;">
     """, unsafe_allow_html=True)
@@ -134,7 +128,6 @@ def home_page():
     with col2:
         st.markdown(info_card("After JobConnect", "• Easy access to verified job opportunities<br>• Secure platform with identity verification<br>• Digital profiles showcase skills & experience<br>• Fair salary expectations and transparency<br>• Quick job matching and applications<br>• Direct communication between parties", "#e9f4ec", "#27ae60", "#27ae60", "🌟"), unsafe_allow_html=True)
     
-    # Platform Growth
     st.markdown("""
     <hr style="width: 100%; height: 2px; background-color: #444; border: none; margin: 1.5rem 0; border-radius: 2px;">
     """, unsafe_allow_html=True)
@@ -154,7 +147,7 @@ def home_page():
     st.markdown("""
     <hr style="width: 100%; height: 2px; background-color: #444; border: none; margin: 1.5rem 0; border-radius: 2px;">
     """, unsafe_allow_html=True)
-   # Custom CSS for contact link styling
+
     st.markdown("""
     <style>
     .contact-link {
@@ -171,7 +164,6 @@ def home_page():
     </style>
     """, unsafe_allow_html=True)
     
-    # Your original content with clickable contact
     st.markdown("""
     <div style='text-align: center; color: #333; font-size: 0.9rem;'>
         💡 <strong>Why Choose JobConnect?</strong><br>
@@ -182,8 +174,7 @@ def home_page():
         </span>
     </div>
     """, unsafe_allow_html=True)
-    
-    # Add a separate contact button below
+
     st.markdown("<br>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([2, 1, 2])
     with col2:

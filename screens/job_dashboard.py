@@ -19,7 +19,6 @@ def job_dashboard():
         """, unsafe_allow_html=True)
     st.markdown("---")
 
-    # Profile completeness check
     if completion < 100:
         st.error(f"⚠️ **Profile Incomplete ({completion}%)** - Complete your profile to apply for jobs and receive offers!")
         if st.button("📝 Complete Profile Now", type="primary", key="dashboard_complete_profile"):
@@ -28,7 +27,6 @@ def job_dashboard():
         st.markdown("---")
         return
 
-    # Active offers display
     def is_active(o):
         try:
             expires = datetime.fromisoformat(o.get("expires_at", datetime.now().isoformat()))
@@ -67,7 +65,6 @@ def job_dashboard():
                     st.rerun()
         st.markdown("---")
 
-    # Aggregate all jobs from demo and employers
     users = read_json("data/users.json")
     employers = [u for u in users if u.get('role') == 'hire']
     
@@ -91,7 +88,6 @@ def job_dashboard():
         st.info("📭 No job postings available at the moment. Please check back later!")
         return
 
-    # Job categories
     default_categories = ["Cook","Maid","Plumber","Electrician","Babysitter","Gardener","Driver","Cleaner","Security Guard"]
     job_categories_set = set(x.lower() for x in default_categories)
     for job in all_jobs:
@@ -101,7 +97,6 @@ def job_dashboard():
     display_job_categories = sorted(j.title() for j in job_categories_set)
     display_to_lower = {j.title():j.lower() for j in job_categories_set}
 
-    # Filters UI
     locations = sorted(set(job.get('location', 'Not specified') for job in all_jobs))
     companies = sorted(set(job['employer_info']['company'] for job in all_jobs))
     salaries = [job.get('salary', 0) or 0 for job in all_jobs if 'salary' in job]
@@ -122,7 +117,6 @@ def job_dashboard():
 
     selected_cat_lower = display_to_lower.get(job_category_filter, "all")
 
-    # Filter jobs
     filtered_jobs = [job for job in all_jobs
                     if (location_filter=="All" or job.get('location', 'Not specified') == location_filter) and
                        (selected_cat_lower=="all" or selected_cat_lower in [jt.lower() for jt in (job.get('job_types') if isinstance(job.get('job_types'), list) else [job.get('job_types')]) if jt]) and
@@ -132,7 +126,6 @@ def job_dashboard():
 
     st.info(f"**Found {len(filtered_jobs)} job(s) matching your filters**")
 
-    # Get user's applied jobs
     applications = get_job_applications()
     applied_set = {(app.get('job_id'), str(app.get('employer_id'))) for app in applications if app.get('applicant_id') == user['id']}
 
@@ -141,10 +134,8 @@ def job_dashboard():
         key = (job.get('id'), str(job['employer_info']['id']))
         (applied_jobs if key in applied_set else not_applied_jobs).append(job)
 
-    # Tabs for Available and Applied Jobs
     tab_avail, tab_applied = st.tabs([f"🟢 Available Jobs ({len(not_applied_jobs)})", f"✅ Applied Jobs ({len(applied_jobs)})"])
 
-    # Available jobs tab
     with tab_avail:
         if not_applied_jobs:
             cols = st.columns(2)
@@ -186,7 +177,6 @@ def job_dashboard():
         else:
             st.info("🎉 No new jobs available to apply for!")
 
-    # Applied jobs tab
     with tab_applied:
         if applied_jobs:
             cols = st.columns(2)

@@ -1,5 +1,3 @@
-# /auth_choice.py
-
 import streamlit as st
 from streamlit_lottie import st_lottie
 import json
@@ -28,7 +26,6 @@ def auth_choice_page():
     </div>
     """, unsafe_allow_html=True)
 
-    # Load and display Lottie animation above the buttons
     lottie = load_lottie(".streamlit/public/Login.json")  
     _,col2,_=st.columns([1,2,1])
     with col2:
@@ -53,9 +50,7 @@ def auth_choice_page():
 
     st.markdown("<br>\n", unsafe_allow_html=True)
 
-    # Center the back button
-   # Increase column width and use container width
-    _, back_col, _ = st.columns([4, 8, 4])  # Wider middle column
+    _, back_col, _ = st.columns([4, 8, 4])  
     with back_col:
        if st.button("← Back", use_container_width=True, type="secondary"):
           st.session_state.page = "home"

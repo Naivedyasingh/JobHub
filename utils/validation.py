@@ -1,43 +1,41 @@
-# utils/validation.py
-
-import re
-
 def validate_phone(phone: str) -> bool:
-    """
-    phone is exactly 10 digits (Indian format).
-    Strips non-digit characters before checking length.
-    """
-    cleaned = re.sub(r"\D", "", str(phone))
-    return len(cleaned) == 10
+    return sum(1 for char in str(phone) if char.isdigit()) == 10
+
 
 def validate_aadhaar(aadhaar: str) -> bool:
-    """
-    Ensure Aadhaar is exactly 12 digits.
-    Strips non-digit characters before checking length.
-    """
-    cleaned = re.sub(r"\D", "", str(aadhaar))
-    return len(cleaned) == 12
+    return sum(1 for char in str(aadhaar) if char.isdigit()) == 12
+
 
 def validate_email(email: str) -> bool:
-    """
-    Basic email format check.
-    Returns True if matches pattern user@domain.tld
-    """
-    pattern = r"^[\w\.-]+@[\w\.-]+\.\w+$"
-    return bool(re.match(pattern, email))
+    email = email.strip()
+    at_count = email.count('@')
+    
+    if at_count != 1:
+        return False
+    
+    local, _, domain = email.partition('@')
+    
+    return (local and domain and 
+            '.' in domain and
+            domain.count('..') == 0 and
+            not domain.startswith('.') and
+            not domain.endswith('.') and
+            len(domain.split('.')[-1]) >= 2)
 
-def validate_password(password: str) -> bool:
+
+def validate_password(password: str) -> tuple[bool, str]:
     """
-    Enforce a minimal password policy:
-      - At least 8 characters
-      - Contains at least one uppercase, one lowercase, one digit
+    Validates password and returns (is_valid, error_message)
     """
     if len(password) < 8:
-        return False
-    if not re.search(r"[A-Z]", password):
-        return False
-    if not re.search(r"[a-z]", password):
-        return False
-    if not re.search(r"\d", password):
-        return False
-    return True
+        return False, "Password must be at least 8 characters long."
+    if not any(c.islower() for c in password):
+        return False, "Password must contain at least one lowercase letter."
+    if not any(c.isupper() for c in password):
+        return False, "Password must contain at least one uppercase letter."
+    if not any(c.isdigit() for c in password):
+        return False, "Password must contain at least one digit."
+    if not any(not c.isalnum() for c in password):
+        return False, "Password must contain at least one special character (!@#$%^&* etc.)."
+    
+    return True, ""

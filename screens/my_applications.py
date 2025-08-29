@@ -84,16 +84,22 @@ def my_applications_page():
             """, unsafe_allow_html=True)
 
             if offer.get("status") == "pending" and not is_expired:
-                if st.button("✅ Accept", key=f"accept_{offer['id']}", type="primary"):
-                    update_offer_status(offer["id"], "accepted", "Offer accepted")
-                    st.success("Offer accepted!")
-                    st.rerun()
-                if st.button("❌ Decline", key=f"decline_{offer['id']}"):
-                    update_offer_status(offer["id"], "rejected", "Offer declined")
-                    st.info("Offer declined.")
-                    st.rerun()
-
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    if st.button("✅ Accept", key=f"accept_{offer['id']}", type="primary", use_container_width=True):
+                        update_offer_status(offer["id"], "accepted", "Offer accepted")
+                        st.success("Offer accepted!")
+                        st.rerun()
+                
+                with col2:
+                    if st.button("❌ Decline", key=f"decline_{offer['id']}", use_container_width=True):
+                        update_offer_status(offer["id"], "rejected", "Offer declined")
+                        st.info("Offer declined.")
+                        st.rerun()
+            
             st.markdown("</div>", unsafe_allow_html=True)
+
 
     def render_application_card(app, col):
         border_color, status_class, status_text = {
@@ -142,7 +148,6 @@ def my_applications_page():
                 "Job Title": lambda a: a.get("job_title", ""),
             }
             filtered.sort(key=sort_keys.get(sort_by, sort_keys["Date Applied"]), reverse=(sort_by == "Date Applied"))
-
             for i in range(0, len(filtered), 2):
                 cols = st.columns(2, gap="large")
                 render_application_card(filtered[i], cols[0])

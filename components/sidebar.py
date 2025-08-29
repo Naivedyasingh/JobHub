@@ -2,7 +2,7 @@ import streamlit as st
 from utils.auth import calculate_profile_completion, update_user_profile
 
 def render_sidebar():
-    # Don't render anything for guests
+    
     if st.session_state.current_user is None:
         return
 
@@ -10,7 +10,6 @@ def render_sidebar():
 
     with st.sidebar:
 
-        # Enhanced avatar with status for job seekers
         if user['role'] == 'job':
             avatar = "👨‍💼" if user.get('gender') == 'Male' else \
                      "👩‍💼" if user.get('gender') == 'Female' else "🧑‍💼"
@@ -45,7 +44,6 @@ def render_sidebar():
             </div>
             """, unsafe_allow_html=True)
 
-            # Quick status changer
             new_status = st.selectbox(
                 "Change Status:",
                 list(status_info.keys()),
@@ -60,7 +58,6 @@ def render_sidebar():
                 st.rerun()
 
         else:
-            # Regular employer avatar
             avatar = "👨‍💼" if user.get('gender') == 'Male' else \
                      "👩‍💼" if user.get('gender') == 'Female' else "🏢"
             st.markdown(f"""
@@ -71,7 +68,6 @@ def render_sidebar():
             </div>
             """, unsafe_allow_html=True)
 
-        # Profile Completion with custom small text (Solution 2)
         completion = calculate_profile_completion(user)
         st.markdown(f"""
         <div style=" margin: 10px 0; padding: 8px; background: #f0f2f6; border-radius: 8px;">

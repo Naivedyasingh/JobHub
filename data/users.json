@@ -328,6 +328,44 @@
                 "posted_date": "2025-07-30T11:10:06.778243",
                 "status": "active",
                 "applications_count": 0
+            },
+            {
+                "title": "Driver",
+                "location": "Rau",
+                "salary": 15000,
+                "job_types": [
+                    "Maid"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "no",
+                "requirements": "no",
+                "benefits": "no",
+                "id": 18,
+                "posted_date": "2025-08-29T17:45:44.640639",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "no",
+                "location": "Rau",
+                "salary": 15000,
+                "job_types": [
+                    "Maid"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "no",
+                "requirements": "no",
+                "benefits": "no",
+                "id": 19,
+                "posted_date": "2025-08-29T17:50:06.121200",
+                "status": "active",
+                "applications_count": 0
             }
         ],
         "expected_salary": 15000
@@ -532,5 +570,141 @@
         "company_name": "Mukesh house",
         "experience": "Fresher",
         "expected_salary": 15000
+    },
+    {
+        "id": 10,
+        "role": "job",
+        "name": "Naman rawat",
+        "phone": "8762323289",
+        "email": "Naman@gmail.com",
+        "gender": "Male",
+        "password": "Abcd123@",
+        "availability_status": "available",
+        "created_at": "2025-08-29T16:26:05.418841",
+        "experience": "Fresher",
+        "aadhaar": "627278788455",
+        "job_types": [
+            "Security Guard"
+        ],
+        "expected_salary": 15000,
+        "availability": [
+            "Full Time"
+        ],
+        "education": "Secondary",
+        "languages": [
+            "Hindi"
+        ],
+        "address": "gandhi nagar indore near ",
+        "city": "Indore",
+        "state": "Madhya Pradesh",
+        "pincode": "453221",
+        "emergency_contact": "9823984156",
+        "emergency_name": ""
+    },
+    {
+        "id": 11,
+        "role": "job",
+        "name": "rama  rana",
+        "phone": "9873842942",
+        "email": "rama@gmail.com",
+        "gender": "Female",
+        "password": "1234567aB@",
+        "availability_status": "available",
+        "created_at": "2025-08-29T16:38:17.244890",
+        "aadhaar": "627278788212",
+        "experience": "Fresher",
+        "job_types": [
+            "Gardener",
+            "Plumber",
+            "Security Guard",
+            "Babysitter",
+            "Other"
+        ],
+        "expected_salary": 15000,
+        "availability": [
+            "Part Time"
+        ],
+        "education": "Graduate",
+        "languages": [
+            "Hindi"
+        ],
+        "address": "Dhanka mohalla shahada",
+        "city": "shahada",
+        "state": "Maharashtra",
+        "pincode": "453331",
+        "emergency_contact": "9823984182",
+        "emergency_name": "rama"
+    },
+    {
+        "id": 12,
+        "role": "hire",
+        "name": "Ayush shukla",
+        "phone": "7878727921",
+        "email": "Ayush@gmail.com",
+        "gender": "Male",
+        "password": "Abcd123@",
+        "availability_status": "available",
+        "created_at": "2025-08-29T16:51:51.278141",
+        "company_name": "Ayush tech private limited",
+        "job_postings": [
+            {
+                "title": "Gym cleaning",
+                "location": "shahada",
+                "salary": 9000,
+                "job_types": [
+                    "Cleaner"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "I need the cleaner for two time in my  company  gym",
+                "requirements": "no",
+                "benefits": "two time meal",
+                "id": 1,
+                "posted_date": "2025-08-29T16:58:47.854584",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Gym cleaning",
+                "location": "shahada",
+                "salary": 15000,
+                "job_types": [
+                    "Cleaner"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "no",
+                "requirements": "no",
+                "benefits": "no",
+                "id": 2,
+                "posted_date": "2025-08-29T17:25:40.223661",
+                "status": "active",
+                "applications_count": 0
+            },
+            {
+                "title": "Driver",
+                "location": "Rau",
+                "salary": 15000,
+                "job_types": [
+                    "Driver"
+                ],
+                "experience": "Any",
+                "working_hours": "Full Time",
+                "urgency": "Normal",
+                "contract_type": "Permanent",
+                "description": "no",
+                "requirements": "no",
+                "benefits": "no",
+                "id": 3,
+                "posted_date": "2025-08-29T17:44:12.783804",
+                "status": "active",
+                "applications_count": 0
+            }
+        ],
+        "experience": "Fresher"
     }
 ]

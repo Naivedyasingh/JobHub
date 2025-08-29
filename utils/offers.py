@@ -1,5 +1,3 @@
-# utils/offers.py
-
 import os
 from datetime import datetime, timedelta
 from utils.data_helpers import read_json, write_json

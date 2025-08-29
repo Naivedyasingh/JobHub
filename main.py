@@ -30,8 +30,6 @@ transparent_header_style = """
         .st-emotion-cache-1ffuo7c {
             background: transparent !important;
         }
-
-        /* Backup selectors in case the emotion class changes */
         [data-testid="stHeader"] {
             background: rgba(0,0,0,0) !important;
         }
@@ -41,7 +39,6 @@ st.markdown(transparent_header_style, unsafe_allow_html=True)
 
 def main():
 
-    # Load video for background
     video_path = r".streamlit/background_video.mp4"  
     if not os.path.exists(video_path):
         st.error(f"Video file not found: {video_path}")
@@ -69,7 +66,6 @@ def main():
     </video>
     """, unsafe_allow_html=True)
 
-    # Set page config and custom background styles
     st.set_page_config(
         page_title="JobHub Portal",
         page_icon="💼",
@@ -78,16 +74,12 @@ def main():
     )
 
 
-    # Render sidebar if logged in
     if st.session_state.current_user:
         render_sidebar()
-
-    # Cleanup user data once
     if 'data_cleaned' not in st.session_state:
         cleanup_user_data()
         st.session_state.data_cleaned = True
 
-    # Page routing
     page = st.session_state.page
 
     if page == "home":

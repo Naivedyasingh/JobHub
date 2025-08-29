@@ -11,10 +11,6 @@ def get_job_offers():
     return read_json("data/job_offers.json")
 
 def save_demo_job(job: dict) -> bool:
-    """
-    Append a new demo job posting.
-    Automatically assigns an incremental ID and appends to the JSON file.
-    """
     jobs = get_demo_jobs()
     job['id'] = len(jobs) + 1
     jobs.append(job)
@@ -36,13 +32,9 @@ def add_job_posting(employer_id, job_data):
             users[i]['job_postings'].append(job_data)
             write_json("data/users.json", users)
             
-            # Update session state
             st.session_state.current_user = users[i]
             return True
     return False
 
 def get_demo_jobs() -> list:
-    """
-    Return the list of demo job postings from data/demo_jobs.json.
-    """
     return read_json(DEMO_JOBS_FILE)

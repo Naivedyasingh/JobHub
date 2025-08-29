@@ -1,8 +1,5 @@
-import os
-import json
 from datetime import datetime, timedelta
 from utils.data_helpers import read_json, write_json
-# ---------------- Authentication & Profile Helpers ----------------
 
 def authenticate(identifier, pwd, role):
     users = read_json("data/users.json")
@@ -18,8 +15,8 @@ def next_user_id(users):
 def calculate_profile_completion(user):
     """Calculate profile completion percentage"""
     if user['role'] == 'job':
-        required_fields = ['name', 'phone', 'email', 'aadhaar', 'address', 'city', 'experience', 'job_types', 'expected_salary', 'availability']
-    else:  # employer
+        required_fields = ['name', 'phone', 'email', 'aadhaar', 'address', 'city', 'experience', 'job_types', 'expected_salary', 'availability','pincode']
+    else: 
         required_fields = ['name', 'phone', 'email', 'company_name', 'company_type', 'address', 'city', 'business_description']
     
     completed = sum(1 for field in required_fields if user.get(field))

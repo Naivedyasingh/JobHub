@@ -1,4 +1,3 @@
-# pages/view_applications.py
 import streamlit as st
 from utils.applications import get_job_applications, update_application_status
 from datetime import datetime

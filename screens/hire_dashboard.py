@@ -9,7 +9,6 @@ def hire_dashboard():
     st.title("🏢 Employer Dashboard")
     st.subheader(f"Welcome back, {user['name']}! 👋")
 
-    # Quick actions
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         if st.button("📝 Post New Job", use_container_width=True, type="primary", key="hire_post_job"):
@@ -30,7 +29,6 @@ def hire_dashboard():
 
     st.markdown("---")
 
-    # Show company stats
     applications = get_job_applications()
     my_applications = [
         app for app in applications
@@ -50,7 +48,6 @@ def hire_dashboard():
         accepted_apps = len([app for app in my_applications if app.get("status") == "accepted"])
         st.metric("Accepted", accepted_apps)
 
-    # Recent applications preview
     st.markdown("---")
     st.subheader("📨 Recent Applications")
     recent_applications = sorted(

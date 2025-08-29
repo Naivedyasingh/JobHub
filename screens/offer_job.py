@@ -1,9 +1,7 @@
-# pages/offer_job.py
-
 import streamlit as st
-from utils.data_helpers import read_json, write_json
 from utils.offers import save_job_offer
 import time
+
 
 def offer_job_page():
     """Enhanced page for employers to offer job to specific candidate"""
@@ -16,7 +14,6 @@ def offer_job_page():
     
     st.title(f"💼 Offer Job to {candidate['name']}")
     
-    # Show candidate summary
     st.markdown(f"""
     <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 10px; padding: 15px; margin: 10px 0;">
         <h4>📋 Candidate Summary</h4>
@@ -28,8 +25,10 @@ def offer_job_page():
     
     st.markdown("---")
     
-    # Job offer form
-    with st.form("job_offer_form"):
+    if 'offer_sent' not in st.session_state:
+        st.session_state.offer_sent = False
+    
+    with st.form("job_offer_form", clear_on_submit=True):
         st.subheader("💼 Job Offer Details")
         
         col1, col2 = st.columns(2)
@@ -47,13 +46,14 @@ def offer_job_page():
         job_description = st.text_area("Job Description *", placeholder="Describe the job responsibilities and requirements...")
         personal_message = st.text_area("Personal Message to Candidate", placeholder="Why do you think they're perfect for this role?")
         
-        submitted = st.form_submit_button("📤 Send Job Offer", type="primary")
+        submitted = st.form_submit_button("📤 Send Job Offer", type="primary", disabled=st.session_state.offer_sent)
     
-    if submitted:
+    if submitted and not st.session_state.offer_sent:
         if not all([job_title.strip(), location.strip(), job_description.strip()]):
             st.error("Please fill all required fields marked with *")
         else:
-            # Create job offer
+            st.session_state.offer_sent = True
+            
             offer_data = {
                 'job_title': job_title.strip(),
                 'job_description': job_description.strip(),
@@ -75,25 +75,29 @@ def offer_job_page():
             
             if save_job_offer(offer_data):
                 st.success(f"🎉 Job offer sent to {candidate['name']}!")
+                st.info("The candidate has 24 hours to respond to your offer.")
+                st.info("You will be notified once they accept or decline the offer.")
+                time.sleep(2)
+                st.session_state.offer_sent = False
                 st.session_state.page = "hire_dashboard"
                 st.session_state.page_flag = None
                 st.session_state.job_posting_disabled = False
-                time.sleep(3)
-                st.info("The candidate has 24 hours to respond to your offer.")
-                st.info("You will be notified once they accept or decline the offer.")
+                st.rerun()
             else:
                 st.error("Failed to send job offer. Please try again.")
+                st.session_state.offer_sent = False
     
-    # Navigation buttons
     st.markdown("---")
     col1, col2 = st.columns(2)
     
     with col1:
         if st.button("← Back to Browse Job Seekers", key="back_to_browse"):
+            st.session_state.offer_sent = False 
             st.session_state.page = "browse_job_seekers"
             st.rerun()
     
     with col2:
         if st.button("🏠 Back to Dashboard", key="back_to_dashboard"):
+            st.session_state.offer_sent = False  
             st.session_state.page = "hire_dashboard"
             st.rerun()

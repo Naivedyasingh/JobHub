@@ -1,5 +1,3 @@
-# utils/data_helpers.py
-
 import os
 import json
 
@@ -32,12 +30,10 @@ def cleanup_user_data():
     updated = False
     
     for i, user in enumerate(users):
-        # Fix gender field
         if user.get('gender') not in ['Male', 'Female', 'Other']:
             users[i]['gender'] = 'Male'
             updated = True
         
-        # Fix expected_salary field
         salary = user.get('expected_salary', 15000)
         if not isinstance(salary, (int, float)) or salary < 5000:
             users[i]['expected_salary'] = 15000
@@ -46,12 +42,10 @@ def cleanup_user_data():
             users[i]['expected_salary'] = 100000
             updated = True
         
-        # Fix experience field
         if user.get('experience') not in ['Fresher', '1-2 years', '2-5 years', '5+ years']:
             users[i]['experience'] = 'Fresher'
             updated = True
         
-        # Add availability status if missing
         if 'availability_status' not in users[i]:
             users[i]['availability_status'] = 'available'
             updated = True

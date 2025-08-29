@@ -1,12 +1,10 @@
-# pages/browse_seekers.py
-
 import datetime
 import streamlit as st
 from utils.auth import calculate_profile_completion
 from utils.applications import get_job_applications
 from utils.offers import get_job_offers
 from utils.data_helpers import read_json
-from datetime import datetime as dt  # for parsing ISO timestamps
+from datetime import datetime as dt  
 
 def get_job_seekers():
     """Get all job seekers with complete profiles"""
@@ -29,7 +27,6 @@ def browse_job_seekers_page():
         st.info("No job seekers with complete profiles found.")
         return
 
-    # Filters
     cols = st.columns(3)
     with cols[0]:
         skill_filter = st.selectbox(
@@ -50,7 +47,6 @@ def browse_job_seekers_page():
             key="availability_filter"
         )
 
-    # Apply filters
     filtered = seekers
     if skill_filter != "All":
         filtered = [s for s in filtered if skill_filter in s.get('job_types', [])]
@@ -61,10 +57,8 @@ def browse_job_seekers_page():
 
     st.write(f"**Found {len(filtered)} job seekers**")
 
-    # Pre-load offers once
     all_offers = get_job_offers()
 
-    # Display seekers in grid layout (2 cards per row)
     for i in range(0, len(filtered), 2):
         cols = st.columns(2, gap="medium")
         
@@ -73,10 +67,8 @@ def browse_job_seekers_page():
                 seeker = filtered[i + j]
                 
                 with col:
-                    # Get status and styling
                     status = seeker.get('availability_status', 'available')
                     
-                    # Clean data like applications page
                     name = str(seeker['name'])
                     phone = str(seeker.get('phone', 'N/A'))
                     experience = str(seeker.get('experience', 'Not specified'))
@@ -105,7 +97,6 @@ def browse_job_seekers_page():
                         badge_color = "#721c24"
                         card_bg = "#f44336"
 
-                    # Create HTML card with ALL content inside (larger size)
                     html_card = f"""
                     <div style="
                         background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); 
@@ -151,9 +142,6 @@ def browse_job_seekers_page():
                     """
 
                     st.markdown(html_card, unsafe_allow_html=True)
-
-                    # Action buttons (outside HTML card, like applications page)
-                    # Check for recent offer
                     recent = None
                     for o in all_offers:
                         if o.get("employer_id") == user["id"] and o.get("job_seeker_id") == seeker["id"]:
@@ -163,7 +151,6 @@ def browse_job_seekers_page():
                                 recent = delta
                                 break
                     
-                    # Action button row
                     action_col1, action_col2 = st.columns(2)
                     
                     with action_col1:
@@ -180,7 +167,6 @@ def browse_job_seekers_page():
                                     st.rerun()
                     
                     with action_col2:
-                        # Toggle details button
                         details_key = f"show_details_{seeker['id']}"
                         if details_key not in st.session_state:
                             st.session_state[details_key] = False
@@ -216,7 +202,6 @@ def browse_job_seekers_page():
                                 st.write(f"**👤 Name:** {seeker.get('emergency_name','Not provided')}")
                                 st.write(f"**📞 Contact:** {seeker.get('emergency_contact','Not provided')}")
                     
-                            # close the white-background container
                             st.markdown("</div>", unsafe_allow_html=True)
 
 
